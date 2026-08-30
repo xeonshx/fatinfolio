@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatin Ishtihad</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #f4f1ea;
+    --ink: #16140f;
+    --ink-soft: #4a463d;
+    --line: #d8d2c2;
+    --accent: #7a3e1d;
+    --paper: #ece7db;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  /* HERO */
+  header.hero{
+    padding:96px 0 64px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:48px;
+    align-items:end;
+  }
+
+  .hero-photo{
+    width:168px;
+    height:168px;
+    border-radius:50%;
+    overflow:hidden;
+    border:1px solid var(--line);
+    flex-shrink:0;
+    justify-self:end;
+  }
+
+  .hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:grayscale(15%);
+  }
+
+  .hero-name{
+    font-size:clamp(48px, 8vw, 88px);
+    line-height:0.98;
+    margin-bottom:18px;
+  }
+
+  .hero-name em{
+    font-style:italic;
+    color:var(--accent);
+  }
+
+  .hero-role{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:560px;
+    font-weight:400;
+  }
+
+  .hero-meta{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 22px;
+    font-size:14px;
+    color:var(--ink-soft);
+  }
+
+  .hero-meta a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .hero-meta a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* SECTIONS */
+  section{
+    padding:56px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:36px;
+  }
+
+  .section-head h2{
+    font-size:32px;
+  }
+
+  .section-line{
+    flex:1;
+    height:1px;
+    background:var(--line);
+    margin-left:24px;
+  }
+
+  /* SUMMARY */
+  .summary p{
+    font-size:22px;
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    max-width:720px;
+    line-height:1.45;
+  }
+
+  .summary p em{ font-style:italic; color:var(--accent); }
+
+  /* ENTRY LIST (experience / education) */
+  .entry{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .entry:first-of-type{ border-top:none; padding-top:0; }
+
+  .entry-when{
+    font-size:13px;
+    color:var(--ink-soft);
+    padding-top:5px;
+    letter-spacing:0.02em;
+  }
+
+  .entry-title{
+    font-size:22px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin-bottom:2px;
+  }
+
+  .entry-org{
+    font-size:15px;
+    color:var(--accent);
+    margin-bottom:14px;
+    font-weight:500;
+  }
+
+  .entry ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+
+  .entry li{
+    font-size:15.5px;
+    color:var(--ink-soft);
+    padding-left:16px;
+    position:relative;
+    max-width:600px;
+  }
+
+  .entry li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--line);
+  }
+
+  .entry-sub{
+    font-size:15px;
+    color:var(--ink-soft);
+    max-width:600px;
+  }
+
+  /* SKILLS */
+  .skill-row{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:24px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    align-items:baseline;
+  }
+
+  .skill-row:first-of-type{ border-top:none; padding-top:0; }
+
+  .skill-label{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+  }
+
+  .skill-values{
+    font-size:17px;
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    line-height:1.6;
+  }
+
+  /* CERTS */
+  .cert-list{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .cert{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:24px;
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .cert:first-child{ border-top:none; padding-top:0; }
+
+  .cert-name{ font-size:17px; }
+  .cert-name b{ font-family:'Fraunces',serif; font-weight:600; }
+  .cert-issuer{ font-size:14px; color:var(--ink-soft); white-space:nowrap; align-self:center; }
+
+  /* CONTACT / FOOTER */
+  footer{
+    padding:80px 0 64px;
+  }
+
+  .contact-line{
+    font-size:clamp(32px, 6vw, 56px);
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    line-height:1.15;
+    max-width:760px;
+  }
+
+  .contact-line a{
+    color:var(--accent);
+    text-decoration:none;
+    border-bottom:2px solid var(--accent);
+  }
+
+  .contact-line a:hover{ opacity:0.7; }
+
+  .footer-meta{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  .footer-meta a{ color:var(--ink-soft); }
+
+  @media (max-width:640px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ justify-self:start; width:120px; height:120px; }
+    .entry, .skill-row{ grid-template-columns:1fr; gap:8px; }
+    .entry-when{ padding-top:0; }
+    .cert{ grid-template-columns:1fr; gap:4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-name">Fatin<br><em>Ishtihad</em></h1>
+        <p class="hero-role">Supply chain student and organizational leader based in Dhaka — running recruitment programs, editorial teams, and 17+ university events, with a growing focus on AI-driven workflows and data analysis.</p>
+        <div class="hero-meta">
+          <span>Dhaka, Bangladesh</span>
+          <a href="mailto:fatin.ishti2000@gmail.com">fatin.ishti2000@gmail.com</a>
+          <a href="tel:+8801303143504">+880 1303-143504</a>
+          <a href="https://linkedin.com/in/fatin-ishtihad-b5375b1b2" target="_blank" rel="noopener">linkedin.com/in/fatin-ishtihad</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="portrait.jpg" alt="Fatin Ishtihad">
+      </div>
+    </div>
+  </header>
+
+  <section class="summary">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="section-line"></span>
+    </div>
+    <p>An ambitious undergraduate with a track record in <em>organizational management</em>, digital strategy, and team leadership. Currently majoring in Supply Chain Management with a minor in Management Information Systems — proficient in AI-driven workflows, data analysis, and cross-functional collaboration. Looking for remote opportunities to put strong communication and a results-oriented mindset to work.</p>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Leadership &amp; Activities</h2>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-when">Feb 2023 – Nov 2025</div>
+      <div>
+        <div class="entry-title">Assistant Director, Organizing &amp; Management</div>
+        <div class="entry-org">BRAC University Business Club (BIZ BEE)</div>
+        <ul>
+          <li>Led the "Bee Hunt" recruitment program, designing and running a systematic evaluation process for candidate selection through interviews and exams.</li>
+          <li>Mentored new students on corporate norms, skill development, and career mapping ahead of professional environments.</li>
+          <li>Orchestrated logistics and networking for 17+ major university events, including HSBC Business Case Competition 2025, Biz Verse 2024, Brainics 2023, and Uddomi Ami 2023–24.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-when">Feb 2023 – Dec 2024</div>
+      <div>
+        <div class="entry-title">Senior Executive, Research &amp; Publication</div>
+        <div class="entry-org">BRAC University Entrepreneurship Development Forum (BUEDF)</div>
+        <ul>
+          <li>Managed captions for social posts across event campaigns, keeping content informative and engaging.</li>
+          <li>Contributed to the design team, creating posters and post designs to promote BUEDF events.</li>
+          <li>Collaborated on publishing "Entrova Edition 1.0" and authored its feature article, "The Ethics of AI in Business: Balancing Progress with Responsibility."</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Education</h2>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-when">Expected 2027</div>
+      <div>
+        <div class="entry-title">Bachelor of Business Administration</div>
+        <div class="entry-org">BRAC University — Major in Supply Chain Management</div>
+        <div class="entry-sub">90 of 130 credits completed at BRAC Business School.</div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-when">2018 – 2022</div>
+      <div>
+        <div class="entry-title">Higher Secondary Certificate</div>
+        <div class="entry-org">Rajuk Uttara Model College — GPA 5.00</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="section-line"></span>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-label">Technical</div>
+      <div class="skill-values">MS Office (Expert Excel), Python (Advanced), Digital Marketing, Data Entry, Data Analysis, DBeaver, Data Studio</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Professional</div>
+      <div class="skill-values">Procurement Basics, Event Planning, Leadership, Critical Thinking, Team Management, Lean Management</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-label">Languages</div>
+      <div class="skill-values">Bangla (Native), English (Fluent), Hindi (Conversational)</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Certifications</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="cert-list">
+      <div class="cert">
+        <div class="cert-name"><b>AI &amp; Machine Learning Fundamentals</b> — Python, Data Analysis</div>
+        <div class="cert-issuer">GP Academy</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><b>Project-Based Excel</b> — Pivot Tables, Dashboards, Complex Formulas</div>
+        <div class="cert-issuer">GP Academy</div>
+      </div>
+      <div class="cert">
+        <div class="cert-name"><b>Career with AI</b></div>
+        <div class="cert-issuer">GP Academy</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="contact-line">Open to remote roles in supply chain, operations, and data — <a href="mailto:fatin.ishti2000@gmail.com">let's talk</a>.</p>
+    <div class="footer-meta">
+      <span>Reference — Sharhat Ahammed Kabir, Deputy Manager, Supply Chain Management, Meghna Group</span>
+      <a href="mailto:sharhat@mohammadandsons.com">sharhat@mohammadandsons.com</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
